@@ -62,7 +62,7 @@ const HomeUser = () => {
                                         <Card.Title key={el.StoryTitleThai}> {el.StoryTitleThai} </Card.Title>
                                         <Card.Text>Introduction : {el.IntroductionStoryEng}</Card.Text>
                                         <Card.Text>เรื่องย่อ : {el.IntroductionStoryThai}</Card.Text>
-                                        <NavLink to={`characterlist/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="info" className='col-lg-6 text-center'>Select</Button></NavLink>
+                                        <NavLink to={`${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="info" className='col-lg-6 text-center'>Select</Button></NavLink>
                                     </Card.Body>
                                 </Card>
                             </>

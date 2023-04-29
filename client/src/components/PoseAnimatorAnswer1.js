@@ -9,14 +9,13 @@ import Form from 'react-bootstrap/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import { useParams, useNavigate } from "react-router-dom"
 import Modal from "react-bootstrap/Modal";
-
 const ImageComponent = () => {
     const { StoryID } = useParams("");
     const { UserName } = useParams("");
-    const { CustomID } = useParams("");
     const { PageNoAnswer1 } = useParams("");
-    const { PageNoAnswer2 } = useParams("");
-    const { PageNoNext } = useParams("");
+    const { PageNoAnswer1Extra } = useParams("");
+    const { PageNoAnswer2Extra } = useParams("");
+
     const history = useNavigate();
 
     const [dataT, setDataT] = useState([]);
@@ -158,24 +157,14 @@ const ImageComponent = () => {
         poses.draw = function () {
             poses.background(bgImage);
             if (singlePose) {
-                for (let i = 0; i < singlePose.keypoints.length; i++) {
-                    poses.ellipse(singlePose.keypoints[i].position.x,
-                        singlePose.keypoints[i].position.y, 20);
-                }
-                for (let j = 0; j < skeleton.length; j++) {
-                    poses.line(skeleton[j][0].position.x,
-                        skeleton[j][0].position.y,
-                        skeleton[j][1].position.x,
-                        skeleton[j][1].position.y)
-                }
                 if (dataC.Drawing != null) {
-                    poses.image(imgDrawing, singlePose.nose.x - 200, singlePose.nose.y - 100, 500, 600);
+                    poses.image(imgDrawing, singlePose.nose.x - 200, singlePose.nose.y - 150, 400, 400);
                 } else if (dataC.UploadImg != null) {
-                    poses.image(imgUpload, singlePose.nose.x - 200, singlePose.nose.y - 100, 500, 600);
+                    poses.image(imgUpload, singlePose.nose.x - 200, singlePose.nose.y - 150, 400, 400);
                 }else if (dataC.DressingHead != null && dataC.DressingBody != null)  {
-                    poses.image(imgDressingBody, singlePose.nose.x - 200, singlePose.nose.y - 100, 500, 600);
-                    poses.image(imgDressingHead, singlePose.nose.x - 200, singlePose.nose.y - 100, 500, 600);
-                }else {
+                    poses.image(imgDressingBody, singlePose.nose.x - 200, singlePose.nose.y - 100, 400, 400);
+                    poses.image(imgDressingHead, singlePose.nose.x - 200, singlePose.nose.y-150, 400, 400);
+                }else  {
                     console.log("error")
                 }
             }
@@ -185,12 +174,28 @@ const ImageComponent = () => {
     // Select Answer
     const [isOpen, setIsOpen] = React.useState(false);
     const showModal = () => {
-        if (dataD.PageType === "normal" && (dataD.PageNo !== PageNoAnswer1 || dataD.PageNo !== PageNoAnswer2 || dataD.PageNo !== PageNoNext)) {
+        if (dataD.PageType === "normal" && dataD.PageNoAnswer1Extra===PageNoAnswer1Extra && dataD.PageNoNext!=="end") {
             setIsOpen(false);
-            // dataD.PageNo=(dataD.PageNo+1)
-            history(`/homeuser/${UserName}/characterlist/${StoryID}/${CustomID}/poseanimator/${dataD.PageNoNext}`)
-        } else if (dataD.PageType === "alternative") {
+            dataD.PageNoNext = PageNoAnswer1Extra
+            history(`/homeuser/${UserName}/${StoryID}/poseanimator/${dataD.PageNoNext}/n2/${PageNoAnswer2Extra}`);
+        }
+        if (dataD.PageType === "normal" && (dataD.PageNoAnswer2Extra===PageNoAnswer2Extra )) {
+            setIsOpen(false);
+            dataD.PageNoNext = PageNoAnswer2Extra
+            history(`/homeuser/${UserName}/${StoryID}/poseanimator/${dataD.PageNoNext}/n2/${PageNoAnswer1Extra}`);
+        } 
+        else
+        if (dataD.PageType === "normal"&& dataD.PageNoAnswer1Extra!==PageNoAnswer1Extra && dataD.PageNoAnswer2Extra!==PageNoAnswer2Extra) {
+            setIsOpen(false);
+            history(`/homeuser/${UserName}/${StoryID}/poseanimator/${dataD.PageNoNext}/n2/${PageNoAnswer1Extra}/${PageNoAnswer2Extra}`);
+        } 
+        else if (dataD.PageType === "alternative") {
             setIsOpen(true);
+        }
+        if(dataD.PageNoNext==="end"){
+            alert("END STORY")
+            history(`/homeuser/${UserName}`);
+
         }
     };
     const hideModal = () => {
@@ -210,8 +215,8 @@ const ImageComponent = () => {
                 </Modal.Header>
                 <Modal.Body>Please select an answer</Modal.Body>
                 <div className="d-flex justify-content-center">
-                    <NavLink to={`${dataD.PageNoAnswer1}`} className="text-decoration-none text-dark"><Button variant="warning" size="lg" style={{ marginRight: '5px' }}>{dataD.AnswerEng1}</Button></NavLink>
-                    <NavLink to={`${dataD.PageNoAnswer2}`} className="text-decoration-none text-dark"><Button variant="info" size="lg" style={{ marginRight: '5px' }}>{dataD.AnswerEng2}</Button></NavLink>
+                    <NavLink to={`/homeuser/${UserName}/${StoryID}/poseanimator/n2/${dataD.PageNoAnswer1Extra}/${dataD.PageNoAnswer1}`} className="text-decoration-none text-dark"><Button variant="warning" size="lg" style={{ marginRight: '5px' }}>{dataD.AnswerEng1}</Button></NavLink>
+                    <NavLink to={`/homeuser/${UserName}/${StoryID}/poseanimator/n2/${dataD.PageNoAnswer2Extra}/${dataD.PageNoAnswer2}/Ans2`} className="text-decoration-none text-dark"><Button variant="info" size="lg" style={{ marginRight: '5px' }}>{dataD.AnswerEng2}</Button></NavLink>
                 </div>
                 <Modal.Footer>
                     {/* audio answer */}

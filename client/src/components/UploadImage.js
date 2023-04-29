@@ -7,9 +7,7 @@ import { useParams } from "react-router-dom"
 
 function UploadImage() {
     const { StoryID } = useParams("");
-    const { CharacterID } = useParams("");
     const { UserName } = useParams("");
-    const { CustomID } = useParams("");
     const [file, setFile] = useState("");
     const [dataC, setDataC] = useState([]);
     const history = useNavigate();
@@ -27,9 +25,9 @@ function UploadImage() {
                 "Content-Type": "multipart/form-data"
             }
         }
-        const res = await axios.post(`/uploadimage/${UserName}/${StoryID}/${CharacterID}`, formData, config);
+        const res = await axios.post(`/uploadimage/${UserName}/${StoryID}`, formData, config);
         if (res.data.status === 201) {
-            history(`/homeuser/${UserName}/characterlist/${StoryID}/${dataC.CustomID + 1}`)
+            history(`/homeuser/${UserName}/${StoryID}/poseanimator`)
 
         } else {
             console.log("error")

@@ -11,13 +11,8 @@ import { useParams, useNavigate } from "react-router-dom"
 import Modal from "react-bootstrap/Modal";
 
 const ImageComponent = () => {
-    const { CharacterID } = useParams("");
     const { StoryID } = useParams("");
     const { UserName } = useParams("");
-    const { CustomID } = useParams("");
-    const { PageNoAnswer1 } = useParams("");
-    const { PageNoAnswer2 } = useParams("");
-    const { PageNoNext } = useParams("");
     const history = useNavigate();
 
     const [dataT, setDataT] = useState([]);
@@ -156,24 +151,13 @@ const ImageComponent = () => {
         poses.draw = function () {
             poses.background(bgImage);
             if (singlePose) {
-                for (let i = 0; i < singlePose.keypoints.length; i++) {
-                    poses.ellipse(singlePose.keypoints[i].position.x,
-                        singlePose.keypoints[i].position.y, 20);
-                }
-                for (let j = 0; j < skeleton.length; j++) {
-                    poses.line(skeleton[j][0].position.x,
-                        skeleton[j][0].position.y,
-                        skeleton[j][1].position.x,
-                        skeleton[j][1].position.y)
-                }
                 if (dataC.Drawing != null) {
-                    poses.image(imgDrawing, singlePose.nose.x - 200, singlePose.nose.y - 100, 500, 600);
+                    poses.image(imgDrawing, singlePose.nose.x - 200, singlePose.nose.y - 150, 400, 400);
                 } else if (dataC.UploadImg != null) {
-                    poses.image(imgUpload, singlePose.nose.x - 200, singlePose.nose.y - 100, 500, 600);
+                    poses.image(imgUpload, singlePose.nose.x - 200, singlePose.nose.y - 150, 400, 400);
                 }else if (dataC.DressingHead != null && dataC.DressingBody != null)  {
-                    poses.image(imgDressingBody, singlePose.nose.x - 200, singlePose.nose.y - 100, 500, 600);
-                    poses.image(imgDressingHead, singlePose.nose.x - 200, singlePose.nose.y - 100, 500, 600);
-
+                    poses.image(imgDressingBody, singlePose.nose.x - 200, singlePose.nose.y - 100, 400, 400);
+                    poses.image(imgDressingHead, singlePose.nose.x - 200, singlePose.nose.y-150, 400, 400);
                 }else {
                     console.log("error")
                 }
@@ -184,10 +168,10 @@ const ImageComponent = () => {
     // Select Answer
     const [isOpen, setIsOpen] = React.useState(false);
     const showModal = () => {
-        if (dataD.PageType === "normal"&& (dataD.PageNo!==PageNoAnswer1 || dataD.PageNo!==PageNoAnswer2 || dataD.PageNo!==PageNoNext) ) {
+        if (dataD.PageType === "normal") {
             setIsOpen(false);
             // dataD.PageNo = (dataD.PageNo + 1)
-            history(`/homeuser/${UserName}/characterlist/${StoryID}/${CustomID}/poseanimator/${dataD.PageNoNext}`)
+            history(`/homeuser/${UserName}/${StoryID}/poseanimator/${dataD.PageNoNext}`)
         } else if (dataD.PageType === "alternative") {
             setIsOpen(true);
         }

@@ -25,7 +25,7 @@ function UploadDressing() {
                 "Content-Type": "multipart/form-data"
             }
         }
-        const res = await axios.post(`/uploaddressingbody/${AdminName}`, formData, config);
+        const res = await axios.post(`/uploaddressing/${AdminName}`, formData, config);
         if (res.data.status === 201) {
             history(`/homeadmin/${AdminName}`)
         } else {

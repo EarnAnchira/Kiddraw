@@ -11,7 +11,6 @@ function Dressing() {
     const [selectedDressingBody, setSelectedDressingBody] = useState({});
     const jsonArray = [selectedDressingHead, selectedDressingBody];
 
-    const {CharacterID}= useParams("");
     const { UserName } = useParams("");
     const { StoryID } = useParams("");
     const [dataC, setDataC] = useState([]);
@@ -41,7 +40,7 @@ function Dressing() {
     }
 
     async function handleSaveClick() {
-        const response = await fetch(`/SaveDressing/${UserName}/${StoryID}/${CharacterID}`, {
+        const response = await fetch(`/SaveDressing/${UserName}/${StoryID}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -50,7 +49,7 @@ function Dressing() {
         });
         if (response.ok) {
             console.log('Dressing saved');
-            history(`/homeuser/${UserName}/characterlist/${StoryID}/${dataC.CustomID+1}`)
+            history(`/homeuser/${UserName}/${StoryID}/poseanimator`)
         } else {
             console.error('Error saving dressing');
         }

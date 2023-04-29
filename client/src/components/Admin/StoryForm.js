@@ -80,7 +80,7 @@ function StoryForm() {
                             <Form.Control type="text" name='fid' onChange={setid} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label style={{ color: 'white' }} >Select Your Image Profile</Form.Label>
+                            <Form.Label style={{ color: 'white' }} >Select Story Image</Form.Label>
                             <Form.Control type="file" name='photo' onChange={setimgfile} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">

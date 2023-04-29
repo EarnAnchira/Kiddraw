@@ -75,10 +75,10 @@ function Drawing() {
     e.preventDefault();
     const canvas = canvasRef.current;
     const pngData = canvas.toDataURL('image/png');
-    axios.post(`/canvas/${UserName}/${StoryID}/${CharacterID}`, { pngData })
+    axios.post(`/canvas/${UserName}/${StoryID}`, { pngData })
       .then(() => {
 
-        history(`/homeuser/${UserName}/characterlist/${StoryID}/${dataC.CustomID + 1}`)
+        history(`/homeuser/${UserName}/${StoryID}/poseanimator`)
         console.log('Drawing saved successfully');
       })
       .catch((error) => {

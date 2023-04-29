@@ -74,9 +74,8 @@ const Home = () => {
                 <h1 className='text-center mt-2' style={{ color: 'white' }}>Story management system</h1>
                 <div className="text-end mt-3">
                     <NavLink to={`storyform`} className="text-decoration-none text-light"><Button variant="primary" style={{ marginRight: '5px' }}>New Story</Button></NavLink>
-                    <NavLink to={`uploaddressing`} className="text-decoration-none text-light"><Button variant="primary">New Dressing</Button></NavLink>
+                    <NavLink to={`uploaddressing`} className="text-decoration-none text-light"><Button variant="success">New Dressing</Button></NavLink>
                 </div>
-    
                 <Scrollbars style={{ swidth: 600, height: 600 }}>
                     <Form>
                         <table className="table table-hover mt-3">
@@ -102,9 +101,9 @@ const Home = () => {
                                         <td>
                                             <button style={{ marginRight: '2px' }} onClick={() => dltStory(el.StoryID)} type="button" className="btn btn-danger"> Delete </button>
                                             <NavLink to={`editstory/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="warning">Edit</Button></NavLink>
-                                            <NavLink to={`view/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="success">View</Button></NavLink>
-                                            <NavLink to={`storydetailform/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="info">Add story detail</Button></NavLink>
-                                            <NavLink to={`characterform/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="info">Add Character</Button></NavLink>
+                                            {/* <NavLink to={`view/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="success">View</Button></NavLink> */}
+                                            <NavLink to={`storydetailformnormal/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="info">Add story normal page</Button></NavLink>
+                                            <NavLink to={`storydetailformalternative/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="info">Add story alternative page</Button></NavLink>
                                         </td>
                                     </tr>
                                 ))}
