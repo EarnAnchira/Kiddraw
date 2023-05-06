@@ -16,7 +16,7 @@ const RecentsUser = () => {
     };
 
     const getUserData = async () => {
-        const res = await axios.get("/getdata", {
+        const res = await axios.get("/getdatalast", {
             params: { q: query },
             headers: {
                 "Content-Type": "application/json"
