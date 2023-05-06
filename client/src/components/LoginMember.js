@@ -29,7 +29,7 @@ function LoginMember() {
         <>
             <div className="login-member">
                 <div className='page-center'>
-                    <img width="200" src="/assest/navbarImg/logo_white.png"></img>
+                    <img width="100" src="/assest/navbarImg/logo_white.png"></img>
                     <div className="welcome-alert"> 
                         <h2>Hello K!ddo</h2>
                     </div>
