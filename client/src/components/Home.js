@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home_components/Home.css'
 import { NavBar } from './nav';
 import Recents from './Home_components/Recents';
