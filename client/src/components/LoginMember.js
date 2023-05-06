@@ -25,6 +25,10 @@ function LoginMember() {
         });
     };
 
+    const register = () =>{
+        history("/registermember")
+    }
+
     return (
         <>
             <div className="login-member">
@@ -43,7 +47,7 @@ function LoginMember() {
                         LOG IN
                     </button>
                     <br></br>
-                    <button className="btn-regis" type="submit">
+                    <button className="btn-regis" type="submit" onClick={register}>
                         register
                     </button>
 

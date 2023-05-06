@@ -28,6 +28,18 @@ var upload = multer({
     fileFilter: isImage
 })
 
+// get username 
+router.get("/getuser/:UserName", (req, res) => {
+    const { UserName } = req.params;
+    conn.query("SELECT * FROM User WHERE UserName = ? ", UserName, (err, result) => {
+        if (err) {
+            res.status(422).json("error");
+        } else {
+            res.status(201).json(result);
+        }
+    })
+});
+
 //uploadStory
 router.post("/storyform/:AdminName", upload.single("photo"), (req, res) => {
     const { fid } = req.body;
@@ -200,6 +212,22 @@ router.get("/getdata", (req, res) => {
     const query = req.query.q;
     try {
         conn.query(`SELECT * FROM Story WHERE StoryTitleEng LIKE '%${query}'`, (err, result) => {
+            if (err) {
+                console.log("error")
+            } else {
+                console.log("data get")
+                res.status(201).json({ status: 201, data: result })
+            }
+        })
+    } catch (error) {
+        res.status(422).json({ status: 422, error })
+    }
+});
+
+// get last story
+router.get("/getdatalast", (req, res) => {
+    try {
+        conn.query(`SELECT * FROM Story ORDER BY StoryID DESC LIMIT 3 `, (err, result) => {
             if (err) {
                 console.log("error")
             } else {
