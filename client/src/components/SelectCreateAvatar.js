@@ -15,7 +15,7 @@ const SelectCreateAvatar = () => {
             <div className="containner" >
                 <div className='page-center'>
                     <div class="option-list">
-                        <NavLink to="drawing" >
+                        <NavLink to="uploadimage" >
                             <div class="list">
                                 <a class="list-info">
                                     <img width="209" height="209" class="list-image" src={pic1}></img>
@@ -24,7 +24,7 @@ const SelectCreateAvatar = () => {
                             </div>
                         </NavLink>
 
-                        <NavLink to="uploadimage" >
+                        <NavLink to="drawing" >
                             <div class="list">
                                 <a class="list-info">
                                     <img width="209" height="209" class="list-image" src={pic2}></img>
