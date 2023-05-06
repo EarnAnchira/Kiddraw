@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import { Scrollbars } from "react-custom-scrollbars"
 import Form from 'react-bootstrap/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import { useParams, useNavigate } from "react-router-dom"
@@ -131,8 +130,8 @@ const ImageComponent = () => {
         poses.setup = function () {
             capture = poses.createCapture(poses.VIDEO);
             // capture.hide();
-            capture.position(720, 8);
-            capture.size(-1, 150);
+            capture.position(830, 100);
+            capture.size(-1, 100);
             poses.createCanvas(720, 400);
             posenet = ml5.poseNet(capture, modelLoaded);
             posenet.on('pose', receivedPoses);
@@ -198,10 +197,19 @@ const ImageComponent = () => {
         setIsOpen(false);
     };
 
+    const PageAns1 = () =>{
+        history(`/homeuser/${UserName}/${StoryID}/poseanimator/n2/${dataD.PageNoAnswer1Extra}/${dataD.PageNoAnswer1}/Ans1`)
+        document.location.reload(false);
+    }
+    const PageAns2 = () =>{
+        history(`/homeuser/${UserName}/${StoryID}/poseanimator/n2/${dataD.PageNoAnswer2Extra}/${dataD.PageNoAnswer2}/Ans2`)
+        document.location.reload(false);
+    }
+
     return (
         <>
         {/* Show select answer */}
-            <Modal show={isOpen} onHide={hideModal}>
+            <Modal show={isOpen} onHide={hideModal} style={{ color: 'green' }}>
                 <Modal.Header>
                     <Modal.Title>
                         {dataD.QuestionEng}
@@ -211,8 +219,8 @@ const ImageComponent = () => {
                 </Modal.Header>
                 <Modal.Body>Please select an answer</Modal.Body>
                 <div className="d-flex justify-content-center">
-                    <NavLink to={`/homeuser/${UserName}/${StoryID}/poseanimator/n2/${dataD.PageNoAnswer1Extra}/${dataD.PageNoAnswer1}`} className="text-decoration-none text-dark"><Button variant="warning" size="lg" style={{ marginRight: '5px' }}>{dataD.AnswerEng1}</Button></NavLink>
-                    <NavLink to={`/homeuser/${UserName}/${StoryID}/poseanimator/n2/${dataD.PageNoAnswer2Extra}/${dataD.PageNoAnswer2}/Ans2`} className="text-decoration-none text-dark"><Button variant="info" size="lg" style={{ marginRight: '5px' }}>{dataD.AnswerEng2}</Button></NavLink>
+                    <Button onClick={PageAns1} variant="warning" size="lg" style={{ marginRight: '5px' }}>{dataD.AnswerEng1}</Button>
+                    <Button onClick={PageAns2} variant="info" size="lg" style={{ marginRight: '5px' }}>{dataD.AnswerEng2}</Button>
                 </div>
                 <Modal.Footer>
                     {/* audio answer */}
@@ -227,7 +235,6 @@ const ImageComponent = () => {
             </Modal>
 
             <h1 className='text-center mt-2' style={{ color: 'white' }}>{dataT.StoryTitleEng}  {dataT.StoryTitleThai}</h1>
-            <Scrollbars style={{ swidth: 600, height: 600 }}>
                 <Form>
                     <div className="container mt-2">
                         {/* poseanimator */}
@@ -243,7 +250,7 @@ const ImageComponent = () => {
                         </div>
                         {/* story detail */}
                         <div className="container mt-2">
-                            <Card style={{ width: '60rem', height: "11rem", background: '#BD9165' }} className="mb-3">
+                            <Card style={{ width: '60rem', height: "13rem", background: '#BD9165',margin: "10px 10px 10px 200px"  }} className="mb-3">
                                 <Card.Body className='text-center' >
                                     <Card.Text >
                                         {dataD.StoryDetailEng}
@@ -259,7 +266,6 @@ const ImageComponent = () => {
                         </div>
                     </div>
                 </Form>
-            </Scrollbars>
         </>
     )
 };

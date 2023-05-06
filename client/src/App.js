@@ -32,58 +32,64 @@ import CharacterForm from './components/Admin/CharacterForm';
 
 function App() {
   return (
-      <div className='App'>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/registeradmin' element={<RegisterAdmin />} />
-          <Route path='/loginadmin' element={<LoginAdmin />} />
-          <Route path='/registermember' element={<RegisterMember />} />
-          <Route path='/loginmember' element={<LoginMember />} />
-          <Route path='/portfolio' element={<Portfolio />} />
-          <Route path='/speakinggame' element={<SpeakingGame />} />
+    <div className='App'>
+      <Routes>
 
-          {/* PATH ADMIN */}
-          <Route path='/homeadmin/:AdminName' element={<HomeAdmin />} />
-          <Route path='/homeadmin/:AdminName/editstory/:StoryID' element={<EditStory />} />
-          <Route path='/homeadmin/:AdminName/view/:StoryID' element={<Details />} />
-          <Route path='/homeadmin/:AdminName/storydetailformnormal/:StoryID' element={<StoryDetailFormNormal />} />
-          <Route path='/homeadmin/:AdminName/storydetailformalternative/:StoryID' element={<StoryDetailFormAlternative />} />
-          <Route path='/homeadmin/:AdminName/characterform/:StoryID' element={<CharacterForm />} />
-          <Route path='/homeadmin/:AdminName/storyform' element={<StoryForm />} />
-          <Route path='/homeadmin/:AdminName/uploaddressing' element={<UploadDressing />} />
 
-          {/* PATH USER */}
-          <Route path='/homeuser/:UserName' element={<HomeUser />} />
-          {/* DRAWING */}
-          <Route path='/homeuser/:UserName/:StoryID' element={<SelectCreateAvatar />} />
-          <Route path='/homeuser/:UserName/:StoryID/drawing' element={<Drawing />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/registeradmin' element={<RegisterAdmin />} />
+        <Route path='/loginadmin' element={<LoginAdmin />} />
+        <Route path='/registermember' element={<RegisterMember />} />
+        <Route path='/loginmember' element={<LoginMember />} />
+        <Route path='/portfolio' element={<Portfolio />} />
+        <Route path='/speakinggame' element={<SpeakingGame />} />
 
-          {/* UPLOAD IMAGE */}
-          <Route path='/homeuser/:UserName/:StoryID/uploadimage' element={<UploadImage />} />
+        {/* PATH ADMIN */}
+        <Route path='/homeadmin/:AdminName' element={<HomeAdmin />} />
+        <Route path='/homeadmin/:AdminName/editstory/:StoryID' element={<EditStory />} />
+        <Route path='/homeadmin/:AdminName/view/:StoryID' element={<Details />} />
+        <Route path='/homeadmin/:AdminName/storydetailformnormal/:StoryID' element={<StoryDetailFormNormal />} />
+        <Route path='/homeadmin/:AdminName/storydetailformalternative/:StoryID' element={<StoryDetailFormAlternative />} />
+        <Route path='/homeadmin/:AdminName/characterform/:StoryID' element={<CharacterForm />} />
+        <Route path='/homeadmin/:AdminName/storyform' element={<StoryForm />} />
+        <Route path='/homeadmin/:AdminName/uploaddressing' element={<UploadDressing />} />
 
-          {/* DRESSING */}
-          <Route path='/homeuser/:UserName/:StoryID/dressing' element={<Dressing />} />
+        {/* PATH USER */}
+        <Route path='/homeuser/:UserName' element={<HomeUser />} />
+        {/* DRAWING */}
+        <Route path='/homeuser/:UserName/:StoryID' element={<SelectCreateAvatar />} />
+        <Route path='/homeuser/:UserName/:StoryID/drawing' element={<Drawing />} />
 
-          {/* POSEANIMATOR */}
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator' element={<PoseAnimator />} />
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext' element={<PoseAnimatorNormalPage1 />} />
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/n1/:PageNoAnswer1Extra/:PageNoAnswer2Extra' element={<PoseAnimatorNormalPage1 />} />
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/n2/:PageNoAnswer1Extra/:PageNoAnswer2Extra' element={<PoseAnimatorNormalPage2/>} />
+        {/* UPLOAD IMAGE */}
+        <Route path='/homeuser/:UserName/:StoryID/uploadimage' element={<UploadImage />} />
 
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/n1/:PageNoAnswer2Extra' element={<PoseAnimatorNormalPage1 />} />
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/n2/:PageNoAnswer2Extra' element={<PoseAnimatorNormalPage2/>} />
+        {/* DRESSING */}
+        <Route path='/homeuser/:UserName/:StoryID/dressing' element={<Dressing />} />
 
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/n1/:PageNoAnswer1Extra/:PageNoAnswer1' element={<PoseAnimatorAnswer1 />} />
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/n2/:PageNoAnswer1Extra/:PageNoAnswer1' element={<PoseAnimatorAnswer1 />} />
+        {/* POSEANIMATOR */}
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator' element={<PoseAnimator />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext' element={<PoseAnimatorNormalPage1 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/n1/:PageNoAnswer1Extra/:PageNoAnswer2Extra' element={<PoseAnimatorNormalPage1 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/n2/:PageNoAnswer1Extra/:PageNoAnswer2Extra' element={<PoseAnimatorNormalPage2 />} />
 
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/:PageNoAnswer1Extra' element={<PoseAnimatorNormalPage1 />} />
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/:PageNoAnswer1Extra' element={<PoseAnimatorNormalPage2 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/n1/:PageNoAnswer2Extra' element={<PoseAnimatorNormalPage1 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/n2/:PageNoAnswer2Extra' element={<PoseAnimatorNormalPage2 />} />
 
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/n1/:PageNoAnswer2Extra/:PageNoAnswer2/Ans2' element={<PoseAnimatorAnswer2 />} />
-          <Route path='/homeuser/:UserName/:StoryID/poseanimator/n2/:PageNoAnswer2Extra/:PageNoAnswer2/Ans2' element={<PoseAnimatorAnswer2 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/n1/:PageNoAnswer1Extra/:PageNoAnswer1/Ans1' element={<PoseAnimatorAnswer1 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/n2/:PageNoAnswer1Extra/:PageNoAnswer1/Ans1' element={<PoseAnimatorAnswer1 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/n1//:PageNoAnswer1/Ans1' element={<PoseAnimatorAnswer1 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/n2//:PageNoAnswer1/Ans1' element={<PoseAnimatorAnswer1 />} />
 
-        </Routes>
-      </div>
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/:PageNoAnswer1Extra' element={<PoseAnimatorNormalPage1 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/:PageNoNext/:PageNoAnswer1Extra' element={<PoseAnimatorNormalPage2 />} />
+
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/n1/:PageNoAnswer2Extra/:PageNoAnswer2/Ans2' element={<PoseAnimatorAnswer2 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/n2/:PageNoAnswer2Extra/:PageNoAnswer2/Ans2' element={<PoseAnimatorAnswer2 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/n1//:PageNoAnswer2/Ans2' element={<PoseAnimatorAnswer2 />} />
+        <Route path='/homeuser/:UserName/:StoryID/poseanimator/n2//:PageNoAnswer2/Ans2' element={<PoseAnimatorAnswer2 />} />
+
+      </Routes>
+    </div>
   );
 }
 
