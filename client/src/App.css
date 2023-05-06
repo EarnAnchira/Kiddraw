@@ -117,28 +117,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
 
-/* .btn-info {
-  color: #fff;
-  background-color: #514a92;
-  position: relative;
-  display: inline-block;
-  font-weight: 700;
-  font-size: 18px;
-  text-align: center;
-  text-transform: uppercase;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1;
-  letter-spacing: 2px;
-  border-radius: 30px;
-  border: 1px solid transparent;
-  box-sizing: border-box;
-  padding: 14px 40px 18px;
-  min-width: 155px;
-  transition: background-color .3s ease-in-out,color .3s ease-in-out;
-  margin-top: 30px;
-} */
-
 .canvas {
   display: flex;
   justify-content: center;
