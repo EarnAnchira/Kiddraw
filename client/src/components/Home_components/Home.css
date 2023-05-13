@@ -15,7 +15,7 @@
     background-image: url(../top_bg.png);
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: cover ; 
+    background-size: 100%; 
     background-attachment: fixed;
 }
 
@@ -98,7 +98,7 @@
 }
 
 .main-section.allStories-section {
-    background-color: #1C0A25;
+    background-color: #183a48;
     -webkit-mask-image: url(./Home_assets/mask_6.svg);
     mask-image: url(./Home_assets/mask_6.svg);
     background-image: url(./Home_assets/section_texture_bg.png);
@@ -128,7 +128,7 @@
     display: inline-block;
     width: 450px;
     vertical-align: middle;
-    background-color: #1C0A25;
+    background-color: #183a48;
     color: antiquewhite;
     padding-left: 30px;
 }
