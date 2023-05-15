@@ -9,7 +9,7 @@
 }
 
 .main-section.topPage {
-    background-color: #173B47;
+    background-color: #100616;
     -webkit-mask-image: url(../Home_components/Home_assets/mask_2.svg);
     mask-image: url(../Home_components/Home_assets/mask_2.svg);
     background-image: url(../Home_components/Home_assets/section_texture_bg.png);
@@ -52,15 +52,15 @@
     border-radius: 20px;
 }
 
-
 .BookPaper {
     position: absolute;
     left: 50%;
     top: -140px;
     transform: translateX(-50%);
     z-index: 6;
+    background-image: url(./papertxture.png);
     background-color: #E5DCD5;
-    background-size: contain;
+    background-size: cover;
     
     width: 918px;
     height: 890px;
@@ -76,21 +76,19 @@
 }
 
 .Storytxt {
-    margin-top: 3rem;
+    margin-top: 2rem;
     margin-left: 1rem;
     margin-right: 1rem;
     color: #452F1C;
     letter-spacing: 0.05rem;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 200 !important;
 }
 
 .StoryAudio {
-    padding-top: 20px;
+    padding-top: 10px;
     position: relative;
     right: -17rem;
-
-    color: #452F1C ;
 }
 
 .EngAudio , .ThAudio {

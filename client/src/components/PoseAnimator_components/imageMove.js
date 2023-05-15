@@ -1,11 +1,13 @@
-import { ReactP5Wrapper } from "react-p5-wrapper";
-import * as ml5 from "ml5";
 import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
-import ReactAudioPlayer from 'react-audio-player';
 import { useParams, useNavigate } from "react-router-dom"
+import * as ml5 from "ml5";
+
+import { ReactP5Wrapper } from "react-p5-wrapper";
+import ReactAudioPlayer from 'react-audio-player';
+
+import SpeakerIcon from './speaker.png';
+
+import Button from 'react-bootstrap/Button';
 import Modal from "react-bootstrap/Modal";
 
 const ImageComponent = () => {
@@ -19,6 +21,8 @@ const ImageComponent = () => {
 
     const [AudioEng, setAudioEng] = useState(null);
     const [AudioThai, setAudioThai] = useState(null);
+    const [isPlayingEN, setIsPlayingEN] = useState(false);
+    const [isPlayingTH, setIsPlayingTH] = useState(false);
 
     const [AudioAnswerEng1, setAudioAnswerEng1] = useState(null);
     const [AudioAnswerEng2, setAudioAnswerEng2] = useState(null);
@@ -38,13 +42,31 @@ const ImageComponent = () => {
     const fetchAudioEng = async () => {
         const response = await fetch(`/audioeng/${StoryID}`);
         const blob = await response.blob();
-        setAudioEng(blob);
+        setAudioEng(URL.createObjectURL(blob));
+        setIsPlayingEN(true);
     };
 
     const fetchAudioThai = async () => {
         const response = await fetch(`/audiothai/${StoryID}`);
         const blob = await response.blob();
-        setAudioThai(blob);
+        setAudioThai(URL.createObjectURL(blob));
+        setIsPlayingTH(true);
+    };
+
+    const PlayAutoEN = () => {
+        if (AudioEng && isPlayingEN) {
+            setIsPlayingEN(false);
+          } else {
+            fetchAudioEng();
+          }
+      };
+
+    const PlayAutoTH = () => {
+        if (AudioEng && isPlayingTH) {
+            setIsPlayingTH(false);
+          } else {
+            fetchAudioThai();
+          }
     };
 
     const getDataTitle = async () => {
@@ -64,7 +86,7 @@ const ImageComponent = () => {
         }
     }
 
-    const getDataDetailetail = async () => {
+    const getDataDetail= async () => {
         const res = await fetch(`/poseanimatorD/${StoryID}`, {
             method: "GET",
             headers: {
@@ -100,7 +122,7 @@ const ImageComponent = () => {
 
     useEffect(() => {
         getDataTitle();
-        getDataDetailetail();
+        getDataDetail();
         getDataCustom();
     }, []);
 
@@ -132,7 +154,7 @@ const ImageComponent = () => {
             capture.style('height', '170px');
             capture.style('clip-path', 'circle(50% at 50% 50%)');
             capture.style('position', 'relative');
-            capture.style('margin', '0px -150px -80px 0px'); 
+            capture.style('margin', '0px -150px -60px 0px'); 
            
             poses.createCanvas(720, 400);
             posenet = ml5.poseNet(capture, modelLoaded);
@@ -241,13 +263,25 @@ const ImageComponent = () => {
                             </div>
                             
                             <div className="StoryAudio">
-                                <button className="EngAudio" onClick={fetchAudioEng}>ENG</button>
-                                {AudioEng && <ReactAudioPlayer src={URL.createObjectURL(AudioEng)} controls />}
+                                <button className="EngAudio" onClick={PlayAutoEN}>
+                                    { AudioEng && isPlayingEN ? (
+                                    <>
+                                        <audio src={AudioEng} autoPlay/>
+                                        Pause
+                                    </>
+                                    ) : ("ENG")}
+                                </button>
 
-                                <button className="ThAudio" onClick={fetchAudioThai}>TH</button>
-                                {AudioThai && <ReactAudioPlayer src={URL.createObjectURL(AudioThai)} controls />}
+                                <button className="ThAudio" onClick={PlayAutoTH}>
+                                    { AudioThai && isPlayingTH ? (
+                                    <>
+                                        <audio src={AudioThai} autoPlay/>
+                                        Pause
+                                    </>
+                                    ) : ("THAI")}
+                                </button>
 
-                                AUDIO
+                                <img src={SpeakerIcon} style={{ width: '25px', filter: 'grayscale(100%)', marginTop:"-3px"}} />
                             </div>
                             
                             <div className="Storytxt">
