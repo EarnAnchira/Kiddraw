@@ -1,4 +1,4 @@
-.main-section {
+.main-section2 {
     width: 100%;
     margin: 0 auto;
     padding: 4.5rem 0;
@@ -8,7 +8,7 @@
     height: 800px;
 }
 
-.main-section.topPage {
+.main-section2.topPage {
     background-color: #100616;
     -webkit-mask-image: url(../Home_components/Home_assets/mask_2.svg);
     mask-image: url(../Home_components/Home_assets/mask_2.svg);

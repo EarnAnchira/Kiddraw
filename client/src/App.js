@@ -5,12 +5,10 @@ import { Routes, Route } from "react-router-dom"
 import Home from './components/Home';
 import StoryForm from './components/Admin/StoryForm';
 import PoseAnimator from './components/PoseAnimator';
-import SpeakingGame from './components/SpeakingGame';
 import LoginAdmin from './components/Admin/LoginAdmin';
 import RegisterAdmin from './components/Admin/RegisterAdmin';
 import LoginMember from './components/LoginMember';
-import RegisterMember from './components/RegisterMember';
-import Portfolio from './components/Portfolio';
+import RegisterMember from './components/RegisterMember'
 import UploadImage from './components/UploadImage';
 import HomeAdmin from './components/Admin/HomeAdmin';
 import EditStory from './components/Admin/EditStory';
@@ -41,8 +39,6 @@ function App() {
         <Route path='/loginadmin' element={<LoginAdmin />} />
         <Route path='/registermember' element={<RegisterMember />} />
         <Route path='/loginmember' element={<LoginMember />} />
-        <Route path='/portfolio' element={<Portfolio />} />
-        <Route path='/speakinggame' element={<SpeakingGame />} />
 
         {/* PATH ADMIN */}
         <Route path='/homeadmin/:AdminName' element={<HomeAdmin />} />

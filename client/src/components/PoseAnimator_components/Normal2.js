@@ -271,7 +271,7 @@ const Normal2Page = () => {
                 </Modal.Footer>
             </Modal>
                 
-            <section class="main-section topPage">
+            <section class="main-section2 topPage">
                 <div class="TitleLabel">
                     <div className="Th_txt">
                         {dataT.StoryTitleThai}

@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Navbar, Nav, Container} from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import { useParams } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
 
 export const NavBarUser = () => {
     const [activeLink, setActiveLink] = useState('Home');
     const [scrolled,seScrolled] = useState(false);
     const [data, setData] = useState([]);
     const { UserName } = useParams("");
-    const history = useNavigate();
 
     const getData = async () => {
         const res = await fetch(`/getuser/${UserName}`, {
@@ -50,7 +48,7 @@ export const NavBarUser = () => {
     return (
         <Navbar expand="lg" className={scrolled ? "scrolled": ""}>
             <Container>
-                <Navbar.Brand href="/">
+                <Navbar.Brand href={`/homeuser/${UserName}`}>
                     <img src="/logo_white.png" width="60" height="60" class="d-inline-block align-top" alt="logo"></img>
                 </Navbar.Brand>
                 <h6 style={{fontWeight:"200", paddingTop:"10px"}}>Welcome Back, {data.UserName}</h6>
