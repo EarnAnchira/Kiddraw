@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './Canvas.css';
 
+import paperHead from './paperhead.png';
+import headLine from './headline.png';
+
 // router
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
@@ -152,8 +155,10 @@ const Canvas = () => {
 
   return (
     <div className="canvas-wrapper">
-        <img width="650" src="/assest/Canvas/paperhead.png"></img>
+        <img width="650" src={paperHead}></img>
+
         <div className="paper">
+            <img width="350" src={headLine} style={{margin:"20px 20px 20px 20px"}}></img>
             <canvas className="canvas"
                 ref={canvasRef}
                 width={canvasWidth}
@@ -190,6 +195,7 @@ const Canvas = () => {
 
             <button className="next_btn" onClick={saveDrawing}> NEXT </button>
         </div>
+
     </div>
   );  
 };
