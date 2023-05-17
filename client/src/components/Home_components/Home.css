@@ -225,3 +225,7 @@
 .content-header {
     margin-top: 20px;
 }
+
+.content-text {
+    font-weight: 200;
+}

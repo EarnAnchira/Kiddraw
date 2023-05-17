@@ -21,9 +21,9 @@ const Howto = () => {
                                 <img width="200" src="/assest/navbarImg/logo_white.png"></img>
                                 <h4 class="content-header">KID-DRAW-CLUB</h4>
                                 <p class="content-text">
-                                    The detail about this kid-draw-club. who are we and what can we do. et cetera.
-                                    The detail about this kid-draw-club. who are we and what can we do. et cetera.
-                                    The detail about this kid-draw-club. who are we and what can we do. et cetera.
+                                    Welcome to kid-draw-club. We are immersive story for children web application.
+                                    On our website, you can create your avatar using drawing, dressing, or upload your
+                                    own picture. Then, you can control it to move like you. And we also have a many story ending! Enjoy.
                                 </p>
                             </div>
 
