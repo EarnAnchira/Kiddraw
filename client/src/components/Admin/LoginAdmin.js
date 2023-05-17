@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import { useNavigate} from "react-router-dom"
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Card from 'react-bootstrap/Card';
 
 function LoginAdmin() {
     const [AdminName, setAdminName] = useState("")
@@ -27,7 +25,6 @@ function LoginAdmin() {
 
     return (
         <>
-
             <div className="login-member">
                 <div className='page-center'>
                     <img width="200" src="/assest/navbarImg/logo_white.png"></img>
@@ -47,11 +44,8 @@ function LoginAdmin() {
                     <button className="btn-regis" type="submit" >
                         register
                     </button>
-
                 </div>
             </div>
-
-            
         </>
     )
 }
