@@ -8,6 +8,9 @@ import Alert from 'react-bootstrap/Alert';
 import Scrollbars from 'react-custom-scrollbars';
 import Form from 'react-bootstrap/Form';
 
+import BookIcon from './books.png';
+import CharacterIcon from './CharacterIcon.png';
+
 import './AdminHome.css'
 const HomeAdminPage = () => {
     const [data, setData] = useState([]);
@@ -69,27 +72,57 @@ const HomeAdminPage = () => {
             }
 
             <div className='PageLabel'>
-                <h1> Stories Management System </h1>
+                <h1>UPDATE NEW ONE</h1>
             </div>
 
-            <div className='NewAdd'>
-                <div className='SubPageLabel'>
-                    <h3> Add New One </h3>
-                </div> 
+            <div class="container">
+                    <div class="section-offer-wrapper">
+                        <div class="section-offer-content">
+                            <div className="NewStory-wrapper">
 
-                <NavLink to={`storyform`} className="text-decoration-none text-light"><Button variant="primary" style={{ marginRight: '5px' }}>New Story</Button></NavLink>
-                <NavLink to={`uploaddressing`} className="text-decoration-none text-light"><Button variant="success">New Dressing</Button></NavLink>    
-            </div>
+                                <NavLink to={`storyform`} className="text-decoration-none text-light">
+                                    <div className="NewStory-rectangle" 
+                                        style={{
+                                            backgroundColor:"#D287FF",
+                                            boxShadow: "inset 0 -10px 0 #A002FF",
+                                            filter: "grayscale(100%) sepia(100%)"
+                                        }}>
+                                        <a className="NewStory-info">
+                                            <img src={BookIcon} style={{ width: '200px'}} />
+                                            <div className="NewStory-THtitle" style={{color:"#1C0A25", fontSize:"25px"}}> NEW STORY</div>
+                                        </a>
+                                    </div>
+                                </NavLink>
+
+                                <NavLink to={`uploaddressing`} className="text-decoration-none text-light">
+                                    <div className="NewStory-rectangle"
+                                        style={{
+                                            backgroundColor:"#D287FF",
+                                            boxShadow: "inset 0 -10px 0 #A002FF",
+                                            filter: "grayscale(100%) sepia(100%)"
+                                        }}>
+                                        <a className="NewStory-info">
+                                            <img src={CharacterIcon} style={{ width: '180px', marginBottom:"20px"}} />
+                                            <div className="NewStory-THtitle" style={{color:"#1C0A25", fontSize:"25px"}}> NEW CHARACTER</div>
+                                        </a>
+                                    </div>
+                                </NavLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             <div className='ManageOld'>
                 <div className='SubPageLabel'>
-                    <h3> Adjust Old One </h3>
+                    <h1> STORY'S MANAGEMENT SYSTEM </h1>
                 </div> 
 
                 <div className="container mt-2">
-                    <ul class="search">
-                        <input class="searchBox" placeholder="search" aria-label="search" style={{ borderRadius: "25px" }} type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
-                        <button onClick={handleFilter} class="btn btn-outline-success my-2 my-sm-0">search</button>
+                    <ul className="form-inline" style={{justifyContent: "center", marginTop:'20px', marginBottom:'20px'}}>
+                        <input class="form-control" placeholder=" search for find story" type="text" value={query} onChange={(e) => setQuery(e.target.value)} style={{backgroundColor:"#1C0A25"}} />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
                     </ul>
 
                     <Scrollbars style={{ swidth: 600, height: 600 }}>
@@ -116,10 +149,12 @@ const HomeAdminPage = () => {
                                             <td>{moment(el.date).format("DD-MM-YYYY")}</td>
                                             <td>
                                                 <button style={{ marginRight: '2px' }} onClick={() => dltStory(el.StoryID)} type="button" className="btn btn-danger"> Delete </button>
-                                                <NavLink to={`editstory/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="warning">Edit</Button></NavLink>
-                                                {/* <NavLink to={`view/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="success">View</Button></NavLink> */}
-                                                <NavLink to={`storydetailformnormal/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="info">Add story normal page</Button></NavLink>
-                                                <NavLink to={`storydetailformalternative/${el.StoryID}`} className="text-decoration-none text-dark"><Button style={{ marginRight: '2px' }} variant="info">Add story alternative page</Button></NavLink>
+                                                <NavLink to={`editstory/${el.StoryID}`} className="text-decoration-none text-dark">
+                                                    <Button style={{ marginRight: '2px' }} variant="warning">Edit</Button></NavLink>
+                                                <NavLink to={`storydetailformnormal/${el.StoryID}`} className="text-decoration-none text-dark">
+                                                    <Button style={{ marginRight: '2px' }} variant="info">Add story normal page</Button></NavLink>
+                                                <NavLink to={`storydetailformalternative/${el.StoryID}`} className="text-decoration-none text-dark">
+                                                    <Button style={{ marginRight: '2px' }} variant="info">Add story alternative page</Button></NavLink>
                                             </td>
                                         </tr>
                                     ))}
