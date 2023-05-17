@@ -95,3 +95,23 @@
     color: #514a92;
     border: 2px solid #514a92;
 }
+
+.label_form {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size: small;
+    color: #848484;
+}
+
+.profilepic {
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    color: #848484;
+    font-size: medium;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
